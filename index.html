@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator oppgave!</title>
+
+<style>
+.body {
+    margin: 0;
+    padding: 0;
+}
+#app {
+    position: absolute;
+    width: 310px;
+    height: 282px;
+    left: 350px;
+    top: 300px; 
+    text-align: center;
+    display: block;
+    
+    
+}
+
+button {
+    background-color: beige;
+    font-size: 40px;
+    width: 74px;
+    height: 70px;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+#display {
+    background-color: grey;
+    position: relative;
+    font-size: 3em;
+    top: 45px;
+    text-align: right;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 305px;
+    height: 70px;
+
+    
+}
+
+#p {
+    color: #FFF;
+    
+    
+}
+
+#AC {
+    position: relative;
+    left: 117px;
+}
+
+
+</style>
+</head>
+
+
+<body>
+    
+    <div id="app"></div>
+
+    <script>
+
+    //model
+        let display = '';
+        
+    
+
+
+    //view
+        updateView();
+        function updateView() {
+            document.getElementById('app').innerHTML = `
+            <p id="display">${display}</p>
+            <button onclick="inputCalc(this)">7</button>
+            <button onclick="inputCalc(this)">8</button>
+            <button onclick="inputCalc(this)">9</button>
+            <button onclick="operateCalc(this)">/</button><br>
+            <button onclick="inputCalc(this)">4</button>
+            <button onclick="inputCalc(this)">5</button>
+            <button onclick="inputCalc(this)">6</button>
+            <button onclick="operateCalc(this)">*</button><br>
+            <button onclick="inputCalc(this)">1</button>
+            <button onclick="inputCalc(this)">2</button>
+            <button onclick="inputCalc(this)">3</button>
+            <button onclick="operateCalc(this)">+</button><br>
+            <button onclick="calculate()">=</button>
+            <button onclick="inputCalc(this)">0</button>
+            <button onclick="operateCalc(this)">.</button>
+            <button onclick="operateCalc(this)">-</button>
+            <button id="AC" onclick="clearDisplay()">AC</button>`; 
+    }
+
+
+    //controller
+
+        function inputCalc(btnElement) {
+            btnElement.innerText;
+            display += btnElement.innerText;
+            updateView();
+        }
+
+        function operateCalc (btnElement) {
+            display += btnElement.innerText;
+            updateView();
+        }
+
+        function clearDisplay() {
+            display = '';
+            updateView();
+        }
+
+        function calculate() {
+            display = eval(display);
+            updateView();
+        }
+    
+    </script>
+
+
+    
+</body>
+</html>
